@@ -1,24 +1,10 @@
 # Strategy Pattern — Apunte
 
-## Arrancar de abajo hacia arriba
+## Arrancar la primera parte
 
-Lo primero que hacemos es dibujar las dependencias del dominio. Cada concepto depende de otro más básico. Si construimos de abajo hacia arriba, siempre nos paramos sobre algo firme y testeado antes de avanzar.
+Leemos la primera parte del enunciado: marcas, jarras. Ahí nomás tenemos que decidir cómo modelar las marcas y las jarras. Reflexionamos y nos damos cuenta que Marca debe ser una clase abstracta de donde salen marcas concretas.
 
-```
-    Carpa (depende de Persona, Marca, Jarra)
-      ↑
-   Persona (depende de Jarra, Marca, Pais)
-      ↑
-    Jarra (depende de Marca)
-      ↑
-    Marca (depende de Pais)
-      ↑
-     Pais (no depende de nada) ← arrancamos acá
-```
-
-Arrancamos por `Pais`, que no depende de nadie. Después `Marca`, que necesita `Pais`. Después `Jarra`, que necesita `Marca`. Después `Persona`, que necesita `Jarra`, `Marca` y `Pais`. Por último `Carpa`, que necesita todo lo anterior.
-
-No avanzamos al siguiente paso hasta que el actual funciona y está testeado. Así nunca tenemos que debuggear dos cosas a la vez.
+Nos damos cuenta en el proceso de codeo que Marca debe tener un método abstracto para calcular la graduación.
 
 ## Mecanismo de decisión: herencia vs strategy
 
