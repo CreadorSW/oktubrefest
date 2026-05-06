@@ -4,6 +4,18 @@
 
 Leemos la primera parte del enunciado: marcas, jarras. Ahí nomás tenemos que decidir cómo modelar las marcas y las jarras. Reflexionamos y nos damos cuenta que Marca debe ser una clase abstracta de donde salen marcas concretas.
 
+Podemos dibujar las dependencias de lo que se ve en la parte 1 del enunciado.
+
+```
+   Persona (depende de Jarra, Marca)
+      ↑
+    Jarra (depende de Marca)
+      ↑
+    Marca (depende de nada — en principio Pais podría ser un String, no una clase)
+```
+
+En la parte 1, `Pais` solo es un atributo (un String). No lo modelamos como clase separada porque el dominio no lo exige todavía. Arrancamos por `Marca`, después `Jarra`, después `Persona`. Cada paso se para sobre el anterior y lo testeamos antes de avanzar.
+
 Nos damos cuenta en el proceso de codeo que Marca debe tener un método abstracto para calcular la graduación.
 
 ## Mecanismo de decisión: herencia vs strategy
