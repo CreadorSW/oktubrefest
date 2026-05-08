@@ -10,7 +10,7 @@ public class Persona {
     private Boolean escuchaMusicaTradicional;
     private Double nivelDeAguante;
     // leGustaStrategy es una variable que va a ser una estrategia diferente según la persona.
-    private LeGustaStrategy leGustaStrategy;
+    private ILeGusta leGustaStrategy;
 
     public Persona(
         Double peso,
