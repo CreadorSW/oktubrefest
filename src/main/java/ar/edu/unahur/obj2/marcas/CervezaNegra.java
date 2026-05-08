@@ -17,7 +17,7 @@ public class CervezaNegra extends Marca {
     public Double graduacion() {
         return Math.min(
             CervezaNegra.graduacionReglamentaria,
-            2 * this.contenidoDeLupulo
+            2 * this.gramosLupulo
         );
     }
 }

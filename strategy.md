@@ -29,6 +29,28 @@ Cuando nos encontramos con un comportamiento que varía, nos preguntamos:
 
 La herencia ata el comportamiento al tipo del objeto para siempre. Strategy nos deja cambiarlo en el momento que queramos, sin crear un objeto nuevo.
 
+**Hay dos tipos de "is-a":**
+
+| | Herencia de clase (`extends`) | Herencia de interfaz (`implements`) |
+|---|---|---|
+| Qué comparte | Estado + comportamiento | Solo contrato (métodos) |
+| Ej | `Rubia extends Marca` | `Pato implements Nadador` |
+| Significado | "es un tipo de" | "es capaz de" |
+
+El ejemplo del profesor (`Pato implements Nadador`) sigue siendo is-a: el pato **es capaz de** nadar. No es Strategy. Es polimorfismo con interfaces, pero no es el patrón Strategy.
+
+**Strategy** es otra cosa: es **has-a** (composición). La persona no implementa `LeGustaStrategy`. La persona **tiene** un objeto que implementa `LeGustaStrategy`.
+
+Los tres patterns usan interfaces, pero la relación es distinta:
+
+| Patrón | Relación |
+|--------|----------|
+| Herencia (class/subclass) | **is-a** → `extends` |
+| Interfaz (Pato/Nadador) | **is-a (capaz de)** → `implements` |
+| Strategy | **has-a** → atributo de tipo interfaz |
+
+La confusión vino porque te mostré una interfaz (`LeGustaStrategy`) pensando en Strategy, y tu profesor te mostró otra interfaz (`Nadador`) pensando en polimorfismo con herencia de interfaz. Son dos usos distintos de interfaces.
+
 ## Sobre los paquetes
 
 Los paquetes existen para agrupar clases relacionadas. No tiene sentido crear un paquete con una sola clase (ej: `pais/Pais.java`). Solo lo justificamos si el concepto crece y aparecen clases nuevas (ej: `Ciudad`, `Provincia`). Caso contrario, ponemos la clase en el paquete raíz y ahorramos ruido.
