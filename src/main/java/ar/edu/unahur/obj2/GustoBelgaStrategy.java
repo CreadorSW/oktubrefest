@@ -2,7 +2,7 @@ package ar.edu.unahur.obj2;
 
 import ar.edu.unahur.obj2.marcas.Marca;
 
-public class GustoBelga implements ILeGusta {
+public class GustoBelgaStrategy implements ILeGusta {
 
     @Override
     public boolean leGusta(Marca marca) {
