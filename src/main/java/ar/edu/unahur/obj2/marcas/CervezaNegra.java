@@ -7,8 +7,8 @@ public class CervezaNegra extends Marca {
     // ponemos static para que sea una constante compartida por todas las instancias de CervezaNegra.
     protected static Double graduacionReglamentaria;
 
-    public CervezaNegra(Pais pais, Double contenidoDeLupulo) {
-        super(pais, contenidoDeLupulo);
+    public CervezaNegra(Pais pais, Double gramosLupulo) {
+        super(pais, gramosLupulo);
     }
 
     public static void setGraduacionReglamentaria(Double valor) {
