@@ -18,7 +18,8 @@ public class CervezaNegra extends Marca {
     @Override
     public Double graduacion() {
         return Math.min(
-            CervezaNegra.graduacionReglamentaria,
+            // Para comparar estas maginitudes, lo que tiene sentido es que la graduación reglamentaria esté en porcentaje (multiplicada por 100).
+            CervezaNegra.graduacionReglamentaria * 100,
             2 * this.gramosLupulo
         );
     }
