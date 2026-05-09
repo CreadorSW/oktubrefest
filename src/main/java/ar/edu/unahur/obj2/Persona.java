@@ -33,7 +33,7 @@ public class Persona {
         return jarras;
     }
 
-    public void agregarJarra(Jarra jarra) {
+    public void tomarJarra(Jarra jarra) {
         jarras.add(jarra);
     }
 
