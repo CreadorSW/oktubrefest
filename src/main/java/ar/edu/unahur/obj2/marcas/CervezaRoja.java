@@ -1,8 +1,10 @@
 package ar.edu.unahur.obj2.marcas;
 
+import ar.edu.unahur.obj2.Pais;
+
 public class CervezaRoja extends CervezaNegra {
 
-    public CervezaRoja(String pais, Double contenidoDeLupulo) {
+    public CervezaRoja(Pais pais, Double contenidoDeLupulo) {
         super(pais, contenidoDeLupulo);
     }
 
