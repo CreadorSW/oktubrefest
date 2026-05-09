@@ -1,12 +1,13 @@
 package ar.edu.unahur.obj2;
 
 import ar.edu.unahur.obj2.marcas.Marca;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Persona {
 
     private Double peso;
-    private List<Jarra> jarras;
+    private List<Jarra> jarras = new ArrayList<>();
     private Boolean escuchaMusicaTradicional;
     private Double nivelDeAguante;
     // leGustaStrategy es una variable que va a ser una estrategia diferente según la persona.
@@ -14,12 +15,12 @@ public class Persona {
 
     public Persona(
         Double peso,
-        List<Jarra> jarras,
+        //List<Jarra> jarras,
         Boolean escuchaMusicaTradicional,
         Double nivelDeAguante
     ) {
         this.peso = peso;
-        this.jarras = jarras;
+        //this.jarras = jarras;
         this.escuchaMusicaTradicional = escuchaMusicaTradicional;
         this.nivelDeAguante = nivelDeAguante;
     }
@@ -30,6 +31,10 @@ public class Persona {
 
     public List<Jarra> getJarras() {
         return jarras;
+    }
+
+    public void agregarJarra(Jarra jarra) {
+        jarras.add(jarra);
     }
 
     public Boolean getEscuchaMusicaTradicional() {
