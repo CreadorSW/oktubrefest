@@ -5,18 +5,23 @@ import ar.edu.unahur.obj2.marcas.Marca;
 public class Jarra {
 
     private Marca marca;
-    private Double capacidad;
+    private Double capacidadLitros;
 
-    public Jarra(Marca marca, Double capacidad) {
+    public Jarra(Marca marca, Double capacidadLitros) {
         this.marca = marca;
-        this.capacidad = capacidad;
+        this.capacidadLitros = capacidadLitros;
     }
 
     public Marca getMarca() {
         return marca;
     }
 
-    public Double getCapacidad() {
-        return capacidad;
+    public Double getCapacidadLitros() {
+        return capacidadLitros;
+    }
+
+    // Es algo que va con el dominio y además lo pide el test
+    public Double contenidoDeAlcoholLitros() {
+        return marca.graduacion() * capacidadLitros;
     }
 }
