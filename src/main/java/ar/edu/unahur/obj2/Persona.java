@@ -6,19 +6,22 @@ import java.util.List;
 
 public class Persona {
 
+    private Pais pais;
     private Double peso;
-    private List<Jarra> jarras = new ArrayList<>();
     private Boolean escuchaMusicaTradicional;
     private Double nivelDeAguante;
     // leGustaStrategy es una variable que va a ser una estrategia diferente según la persona.
     private ILeGusta leGustaStrategy;
+    private List<Jarra> jarras = new ArrayList<>();
 
     public Persona(
+        Pais pais,
         Double peso,
         //List<Jarra> jarras,
         Boolean escuchaMusicaTradicional,
         Double nivelDeAguante
     ) {
+        this.pais = pais;
         this.peso = peso;
         //this.jarras = jarras;
         this.escuchaMusicaTradicional = escuchaMusicaTradicional;
