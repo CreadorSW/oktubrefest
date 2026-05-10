@@ -51,6 +51,42 @@ Los tres patterns usan interfaces, pero la relación es distinta:
 
 La confusión vino porque te mostré una interfaz (`LeGustaStrategy`) pensando en Strategy, y tu profesor te mostró otra interfaz (`Nadador`) pensando en polimorfismo con herencia de interfaz. Son dos usos distintos de interfaces.
 
+## Template method
+
+En tu código actual, **no** es exactamente Template Method. Tanto `CervezaNegra` como `CervezaRoja` redefinen `graduacion()` enteras. Cada una tiene su propia implementación completa. `CervezaRoja` llama a `super.graduacion()` como un atajo, pero es una decisión de ella, no un diseño del padre.
+
+En Template Method clásico, el **padre** tiene un método **concreto** (no abstracto) que es la plantilla, y llama adentro a métodos abstractos o sobrescribibles que las subclases implementan. Por ejemplo:
+
+```
+CervezaNegra:
+
+    // Este es el método plantilla (template method) - es concreto, no abstracto
+    public Double graduacion() {
+        return calcularGraduacionBase();        ← llama a un paso
+    }
+
+    // Este es el paso que las subclases pueden ajustar
+    protected Double calcularGraduacionBase() {
+        return Math.min(graduacionReglamentaria * 100, 2 * gramosLupulo) / 100;
+    }
+```
+
+```
+CervezaRoja:
+
+    // Solo sobreescribe el paso, no el algoritmo completo
+    @Override
+    protected Double calcularGraduacionBase() {
+        return super.calcularGraduacionBase() * 1.25;
+    }
+```
+
+La diferencia es sutil pero importante:
+- **Lo que vos tenés:** cada hijo redefine `graduacion()` entero. El padre no controla nada.
+- **Template Method:** el padre tiene un método plantilla concreto (`graduacion()`) que define el esqueleto, y los hijos solo modifican pasos específicos (`calcularGraduacionBase()`) sin reescribir la estructura completa.
+
+En tu caso actual, no hay problema con que sea así nomás. Es más simple y funciona. Template Method tendría sentido si el cálculo de graduación tuviera varios pasos y quisieras que algunos varíen y otros no.
+
 ## Sobre los paquetes
 
 Los paquetes existen para agrupar clases relacionadas. No tiene sentido crear un paquete con una sola clase (ej: `pais/Pais.java`). Solo lo justificamos si el concepto crece y aparecen clases nuevas (ej: `Ciudad`, `Provincia`). Caso contrario, ponemos la clase en el paquete raíz y ahorramos ruido.
