@@ -19,13 +19,15 @@ public class Persona {
         Double peso,
         //List<Jarra> jarras,
         Boolean escuchaMusicaTradicional,
-        Double nivelDeAguante
+        Double nivelDeAguante,
+        ILeGusta leGustaStrategy
     ) {
         this.pais = pais;
         this.peso = peso;
         //this.jarras = jarras;
         this.escuchaMusicaTradicional = escuchaMusicaTradicional;
         this.nivelDeAguante = nivelDeAguante;
+        this.leGustaStrategy = leGustaStrategy;
     }
 
     public Double getPeso() {

@@ -35,13 +35,33 @@ public class PersonaTest {
         alemania = new Pais("Alemania");
         belgica = new Pais("Belgica");
         republicaCheca = new Pais("República Checa");
+
         heinekenNegra = new CervezaNegra(holanda, 3.0);
         heinekenRoja = new CervezaRoja(holanda, 3.0);
-        budweirserRubia = new CervezaRubia(alemania, 3.5, 0.07);
+        budweirserRubia = new CervezaRubia(alemania, 3.5, 0.09);
         CervezaNegra.setGraduacionReglamentaria(0.08);
-        juan = new Persona(alemania, 80.0, true, 12.0);
-        pedro = new Persona(belgica, 77.0, false, 15.0);
-        natalia = new Persona(republicaCheca, 68.0, true, 9.0);
+
+        juan = new Persona(
+            alemania,
+            80.0,
+            true,
+            12.0,
+            new GustoAlemanStrategy()
+        );
+        pedro = new Persona(
+            belgica,
+            77.0,
+            false,
+            15.0,
+            new GustoBelgaStrategy()
+        );
+        natalia = new Persona(
+            republicaCheca,
+            68.0,
+            true,
+            9.0,
+            new GustoChecoStrategy()
+        );
 
         // Juan y Pedro escabian
         juan.tomarJarra(new Jarra(heinekenNegra, 1.0));
@@ -68,5 +88,9 @@ public class PersonaTest {
     }
 
     @Test
-    public void dadaUnaMarca_cuandoUnaPersonaLaConsume_saberSiLeGusta() {}
+    public void dadaUnaMarca_cuandoUnaPersonaLaRecibe_saberSiLeGusta() {
+        assertFalse(natalia.leGusta(heinekenNegra));
+        assertFalse(natalia.leGusta(heinekenRoja));
+        assertTrue(natalia.leGusta(budweirserRubia));
+    }
 }
