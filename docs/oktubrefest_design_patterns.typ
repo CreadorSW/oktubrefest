@@ -182,3 +182,21 @@ Y algo similar para la clase `CervezaRoja`. Entonces no tenemos un Padre que ges
 En principio en este caso no hay problema con que sea así nomás. Es simple y funciona. Template Method tendría más sentido si el cálculo de graduación tuviera varios pasos y quisiéramos que algunos varíen y otros no.
 
 Igualmente implementaremos Template Method en la rama *#gitBranch #text(fill:purpleBranch)[refactor-template-method]*.
+
+= Template Method (#gitBranch #text(fill:purpleBranch)[refactor-template-method])
+
+Fuimos a `Marca.java` y refactorizamos el método `graduacion()` para que se transforme en Template Method.
+
+```java
+public abstract class Marca {
+  // lógica
+
+  // Template method. Método concreto que define el esqueleto y llama a pasos internos.
+  public Double graduacion() {
+      return calcularGraduacion(); // <- llama a un paso
+  }
+
+  protected abstract Double calcularGraduacion(); // <- el paso que varía.
+}
+```
+Luego cada cerveza sobreescribe `calcularGraduacion()` para implementar su propia lógica.  Con un solo paso, Template Method es puramente ceremonial. Es lo mismo que tener `graduacion()` abstracto directamente. La diferencia es conceptual, no práctica. El patrón muestra su valor cuando el esqueleto tiene *varios pasos*, algunos fijos y otros variables.
