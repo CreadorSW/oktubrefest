@@ -1,6 +1,7 @@
 package ar.edu.unahur.obj2.marcas;
 
 import ar.edu.unahur.obj2.Pais;
+import java.util.Calendar;
 
 public abstract class Marca {
 
@@ -20,6 +21,10 @@ public abstract class Marca {
         return gramosLupulo;
     }
 
-    // La gracia de poner el modificador abstract es que las subclases deben implementarlo. Sino el compilador tira un error.
-    public abstract Double graduacion();
+    // Template method. Método concreto que define el esqueleto y llama a pasos internos.
+    public Double graduacion() {
+        return calcularGraduacion(); // <- llama a un paso
+    }
+
+    protected abstract Double calcularGraduacion(); // <- el paso que varía.
 }

@@ -9,7 +9,7 @@ public class CervezaRoja extends CervezaNegra {
     }
 
     @Override
-    public Double graduacion() {
-        return super.graduacion() * 1.25;
+    public Double calcularGraduacion() {
+        return super.calcularGraduacion() * 1.25;
     }
 }

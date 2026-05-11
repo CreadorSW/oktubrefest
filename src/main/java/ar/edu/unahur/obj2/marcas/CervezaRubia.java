@@ -12,7 +12,7 @@ public class CervezaRubia extends Marca {
     }
 
     @Override
-    public Double graduacion() {
+    public Double calcularGraduacion() {
         return this.graduacion;
     }
 }

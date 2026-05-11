@@ -16,7 +16,7 @@ public class CervezaNegra extends Marca {
     }
 
     @Override
-    public Double graduacion() {
+    public Double calcularGraduacion() {
         // Al final dividimos por 100 para obtener la el porcentaje en formato decimal (entre 0 y 1).
         return (
             Math.min(
