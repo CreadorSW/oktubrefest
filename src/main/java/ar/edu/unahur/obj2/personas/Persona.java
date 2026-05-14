@@ -78,4 +78,17 @@ public class Persona {
             this.escuchaMusicaTradicional == carpa.getTieneBandaTradicional()
         );
     }
+
+    public Boolean puedeEntrarACarpa(Carpa carpa) {
+        return (
+            this.quiereEntrarACarpa(carpa) && carpa.dejaIngresarAPersona(this)
+        );
+    }
+
+    public void entrarACarpa(Carpa carpa) {
+        if (!puedeEntrarACarpa(carpa)) {
+            throw new RuntimeException("No puede entrar a la carpa");
+        }
+        carpa.admitirPersona(this);
+    }
 }
