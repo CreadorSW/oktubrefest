@@ -1,5 +1,8 @@
-package ar.edu.unahur.obj2;
+package ar.edu.unahur.obj2.personas;
 
+import ar.edu.unahur.obj2.Carpa;
+import ar.edu.unahur.obj2.Jarra;
+import ar.edu.unahur.obj2.Pais;
 import ar.edu.unahur.obj2.marcas.Marca;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,5 +70,12 @@ public class Persona {
     // La persona recibe el mensaje leGusta(marca) y se lo reenvía a la estrategia. La persona no sabe la respuesta. Pero sabe que **tiene** un objeto (leGustaStrategy) que sí sabe responder esa pregunta.
     public Boolean leGusta(Marca marca) {
         return leGustaStrategy.leGusta(marca);
+    }
+
+    public Boolean quiereEntrarACarpa(Carpa carpa) {
+        return (
+            this.leGusta(carpa.getMarcaDeCerveza()) &&
+            this.escuchaMusicaTradicional == carpa.getTieneBandaTradicional()
+        );
     }
 }

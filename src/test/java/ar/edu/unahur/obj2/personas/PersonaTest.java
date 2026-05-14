@@ -1,12 +1,14 @@
-package ar.edu.unahur.obj2;
+package ar.edu.unahur.obj2.personas;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import ar.edu.unahur.obj2.Carpa;
 import ar.edu.unahur.obj2.Jarra;
 import ar.edu.unahur.obj2.Pais;
 import ar.edu.unahur.obj2.marcas.CervezaNegra;
 import ar.edu.unahur.obj2.marcas.CervezaRoja;
 import ar.edu.unahur.obj2.marcas.CervezaRubia;
+import ar.edu.unahur.obj2.personas.GustoChecoStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,14 +21,22 @@ public class PersonaTest {
     private Pais alemania;
     private Pais belgica;
     private Pais republicaCheca;
-    // Cervezas
-    private CervezaNegra heinekenNegra;
-    private CervezaRoja heinekenRoja;
-    private CervezaRubia budweirserRubia;
+
+    // Marcas
+    private CervezaRubia coronaRubia;
+    private CervezaNegra guinessNegra;
+    private CervezaRoja hofbrauRoja;
+
     // Personas
     private Persona juan;
     private Persona pedro;
     private Persona natalia;
+
+    // Carpas
+    private Carpa carpaHolanda;
+    private Carpa carpaAlemania;
+    private Carpa carpaBelgica;
+    private Carpa carpaRepublicaCheca;
 
     @BeforeEach
     public void setUp() {
@@ -36,9 +46,9 @@ public class PersonaTest {
         belgica = new Pais("Belgica");
         republicaCheca = new Pais("República Checa");
 
-        heinekenNegra = new CervezaNegra(holanda, 3.0);
-        heinekenRoja = new CervezaRoja(holanda, 3.0);
-        budweirserRubia = new CervezaRubia(alemania, 3.5, 0.09);
+        guinessNegra = new CervezaNegra(holanda, 3.0);
+        hofbrauRoja = new CervezaRoja(holanda, 3.0);
+        coronaRubia = new CervezaRubia(alemania, 3.5, 0.09);
         CervezaNegra.setGraduacionReglamentaria(0.08);
 
         juan = new Persona(
@@ -64,12 +74,18 @@ public class PersonaTest {
         );
 
         // Juan y Pedro escabian
-        juan.tomarJarra(new Jarra(heinekenNegra, 1.0));
-        juan.tomarJarra(new Jarra(heinekenRoja, 1.0));
+        juan.tomarJarra(new Jarra(guinessNegra, 1.0));
+        juan.tomarJarra(new Jarra(hofbrauRoja, 1.0));
 
-        pedro.tomarJarra(new Jarra(heinekenNegra, 1.0));
-        pedro.tomarJarra(new Jarra(heinekenRoja, 1.0));
-        pedro.tomarJarra(new Jarra(budweirserRubia, 1.0));
+        pedro.tomarJarra(new Jarra(guinessNegra, 1.0));
+        pedro.tomarJarra(new Jarra(hofbrauRoja, 1.0));
+        pedro.tomarJarra(new Jarra(coronaRubia, 1.0));
+
+        // Carpas
+        carpaHolanda = new Carpa(12, true, guinessNegra);
+        carpaAlemania = new Carpa(15, false, hofbrauRoja);
+        carpaBelgica = new Carpa(17, true, coronaRubia);
+        carpaRepublicaCheca = new Carpa(7, false, coronaRubia);
     }
 
     //Given-When-Then furioso
@@ -89,8 +105,14 @@ public class PersonaTest {
 
     @Test
     public void dadaUnaMarca_cuandoUnaPersonaLaRecibe_saberSiLeGusta() {
-        assertFalse(natalia.leGusta(heinekenNegra));
-        assertFalse(natalia.leGusta(heinekenRoja));
-        assertTrue(natalia.leGusta(budweirserRubia));
+        assertFalse(natalia.leGusta(guinessNegra));
+        assertFalse(natalia.leGusta(hofbrauRoja));
+        assertTrue(natalia.leGusta(coronaRubia));
+    }
+
+    @Test
+    public void dadaUnaCarpa_cuandoUnaPersonaLlega_saberSiQuiereEntrar() {
+        assertTrue(natalia.quiereEntrarACarpa(carpaBelgica));
+        assertFalse(natalia.quiereEntrarACarpa(carpaHolanda));
     }
 }

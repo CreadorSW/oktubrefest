@@ -1,4 +1,4 @@
-package ar.edu.unahur.obj2;
+package ar.edu.unahur.obj2.personas;
 
 import ar.edu.unahur.obj2.marcas.Marca;
 
