@@ -132,7 +132,7 @@ Los tres patterns usan interfaces, pero la relación es distinta:
 )
 
 
-La confusión vino porque te mostré una interfaz (`LeGustaStrategy`) pensando en Strategy, y tu profesor te mostró otra interfaz (`Nadador`) pensando en polimorfismo con herencia de interfaz. Son dos usos distintos de interfaces.
+Notemos la diferencia entre una interfaz Strategy `LeGustaStrategy`, y la que mostró el profesor, `Nadador`, que es un polimorfismo con herencia de interfaz. Son dos usos distintos de interfaces.
 
 == Template method
 
