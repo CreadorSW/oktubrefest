@@ -34,4 +34,23 @@ public class PersonaTest extends TestBase {
         assertTrue(natalia.quiereEntrarACarpa(carpaBelgica));
         assertFalse(natalia.quiereEntrarACarpa(carpaHolanda));
     }
+
+    @Test
+    public void dadaUnaCarpa_cuandoUnaPersonaLlega_saberSiPuedeEntrar() {
+        assertTrue(natalia.puedeEntrarACarpa(carpaBelgica));
+        assertFalse(natalia.puedeEntrarACarpa(carpaHolanda));
+    }
+
+    @Test
+    public void dadaUnaCarpa_cuandoUnaPersonaLlegaYNoPuedeEntrar_ObtenerError() {
+        assertThrows(RuntimeException.class, () ->
+            natalia.entrarACarpa(carpaHolanda)
+        );
+    }
+
+    @Test
+    public void dadaUnaCarpa_cuandoUnaPersonaLlegaYPuedeEntrar_EntrarACarpa() {
+        natalia.entrarACarpa(carpaBelgica);
+        assertTrue(carpaBelgica.getPersonasAdmitidas().contains(natalia));
+    }
 }

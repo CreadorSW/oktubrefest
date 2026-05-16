@@ -91,4 +91,10 @@ public class Persona {
         }
         carpa.admitirPersona(this);
     }
+
+    public Boolean esPatriota() {
+        return this.jarras.stream().allMatch(
+            j -> j.getMarca().getPais() == this.pais
+        );
+    }
 }

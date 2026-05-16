@@ -26,6 +26,10 @@ public class Carpa {
         return limiteDeGenteAdmitida;
     }
 
+    public List<Persona> getPersonasAdmitidas() {
+        return personasAdmitidas;
+    }
+
     public Boolean getTieneBandaTradicional() {
         return tieneBandaTradicional;
     }

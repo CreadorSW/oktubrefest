@@ -11,4 +11,17 @@ public class CarpaTest extends TestBase {
         assertFalse(carpaHolanda.dejaIngresarAPersona(pedro));
         assertTrue(carpaHolanda.dejaIngresarAPersona(juan));
     }
+
+    @Test
+    public void dadaUnaPersonaEnLaCarpa_CuandoLaCarpaQuiereServirleUnaJarra_LaJarraSeSirve() {
+        natalia.entrarACarpa(carpaBelgica);
+        carpaBelgica.servirJarraAPersona(natalia, 1.0);
+        // Ahora tenemos que chequear que natalia tiene esa jarra
+        assertEquals(1.0, natalia.getJarras().size());
+        assertEquals(
+            carpaBelgica.getMarcaDeCerveza(),
+            natalia.getJarras().get(0).getMarca()
+        );
+        assertEquals(1.0, natalia.getJarras().get(0).getCapacidadLitros());
+    }
 }
